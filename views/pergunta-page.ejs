@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include ("partials/head.ejs") %>
+
+
+    <body>
+        <%- include ("partials/navbar.ejs") %>
+
+
+            <div class="container">
+                <div class="row my-5">
+                    <p>
+                        <%=pergunta.createdAt%>
+                    </p>
+                    <hr>
+                    <h1>
+                        <%=pergunta.titulo%>
+                    </h1>
+                    <p>
+                        <%=pergunta.descricao%>
+                    </p>
+                    <hr>
+                </div>
+                
+
+                <div class="row">
+                    <form action="/respostas" class="form-group" method="post">
+                        <h3>Responda</h3>
+                        <textarea name="respostaDescricao" id="respostaDescricao" class="form-control"></textarea>
+                        <input type="hidden" name="perguntaId" value="<%=pergunta.id%>">
+                        <button type="submit" class="btn btn-primary my-3">Responder</button>
+                    </form>
+                </div>
+
+                
+                <% if(respostas !== undefined && respostas !== null) { %>
+                    <div class="my-5">
+                        <hr>
+                        <h1>Respostas</h1>
+                        <hr>
+                    </div>
+                    <% respostas.forEach( resposta => { %>
+                            <div class="card my-3">
+                                <div class="card-header">
+                                    <%= resposta.createdAt%>
+                                </div>
+                                <div class="card-body"><%= resposta.descricao%></div>
+                            </div>
+                    <% }) %>
+                <% } %>
+            </div>
+
+
+            <%- include ("partials/bootstrap-scripts.ejs") %>
+    </body>
+
+</html>

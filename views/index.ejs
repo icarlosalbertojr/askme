@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include ( "partials/head.ejs" ) %>
+
+    <body>
+        <%- include ("partials/navbar.ejs") %>
+
+            <div class="container">
+                <div class="row my-5">
+                    <form class="" action="/perguntas/pg/nova" method="get">
+                        <button type="submit" class="btn-lg btn-primary">Perguntar</button>
+                    </form>
+                </div>
+
+
+                <% if(perguntas !==undefined && perguntas !==null) { %>
+                    <% perguntas.forEach( (pergunta)=> { %>
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <span class="col-10">
+                                        <h3>
+                                            <%=pergunta.titulo%>
+                                        </h3>
+                                    </span>
+                                    <span class="col-2">
+                                        <p class="text-secondary">
+                                            <%=pergunta.createdAt%>
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="/perguntas/pg/<%= pergunta.id %>">
+                                    <button class="btn-lg btn-primary">Responder</button>
+                                </a>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } %>
+
+            </div>
+            <%- include ("partials/bootstrap-scripts.ejs") %>
+    </body>
+
+</html>

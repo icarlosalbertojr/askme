@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include ("partials/head.ejs") %>
+
+
+    <body>
+        <%- include ("partials/navbar.ejs") %>
+
+
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="">Realizar pergunta</h1>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-group" method="post" action="/perguntas/salvar">
+                            <label for="input-ask-titulo">Título</label>
+                            <input class="form-control" type="text" name="titulo" placeholder="Título" id="input-ask-titulo" />
+                            <br />
+                            <label for="input-ask-description">Descrição</label>
+                            <textarea class="form-control" type="text" name="descricao" placeholder="Descreva aqui..."
+                                id="input-ask-description"></textarea>
+                            <br />
+                            <button class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include ("partials/bootstrap-scripts.ejs") %>
+    </body>
+
+</html>
